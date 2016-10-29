@@ -10,19 +10,28 @@ import UIKit
 
 class MasterTableViewController: UITableViewController {
     
+    var progressIndiactor: UIActivityIndicatorView?
     var productList: [Product] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.register(UINib(nibName: "MasterTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.estimatedRowHeight = 44.0
         tableView.separatorStyle = .none
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        progressIndiactor = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        progressIndiactor?.color = UIColor.blue
+        progressIndiactor?.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
+        progressIndiactor?.center = self.view.center
+        progressIndiactor?.hidesWhenStopped = true
+        view.addSubview(progressIndiactor!)
+        progressIndiactor?.bringSubview(toFront: view)
+        progressIndiactor?.startAnimating()
+    
         HatShopService.sharedInstance.getDataFromService(endPoint: EndPoint.hat) { (data) in
             self.productList = DataFormatter.getListOfProducts(data: data)
+            self.progressIndiactor?.stopAnimating()
             self.tableView.reloadData()
         }
     }
@@ -92,20 +101,32 @@ class MasterTableViewController: UITableViewController {
     func ratingButtonTapped(_ button: UIButton) {
         print(button.tag)
         print("Button pressed 👍")
+       
+        let currentProduct = self.productList[button.tag]
+        guard let imageToShare = currentProduct.productImage, let textToShare = currentProduct.title else {
+            return
+        }
+        let objectsToShare = [textToShare, imageToShare] as [Any]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        activityVC.popoverPresentationController?.sourceView = button
+        self.present(activityVC, animated: true, completion: nil)
     }
 
     
-    //then make a action method :
+
     
     func action(sender: UIButton) {
         print("Button Clicked")
+        
     }
-    
+    /*
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         return UITableViewAutomaticDimension
     }
-    
+    */
   
     
 
