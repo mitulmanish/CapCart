@@ -61,7 +61,7 @@ class DetailTableViewController: UITableViewController {
         } else if index == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "price_cell", for: indexPath) as! PriceTableViewCell
             cell.selectionStyle = .none
-            if let price = self.productAsList?[index] as? Int {
+            if let price = self.productAsList?[index] as? String {
                 cell.priceLabel.text = "$\(price)"
             }
             return cell
@@ -92,14 +92,21 @@ class DetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4 {
-            if let sizeInformation = self.productAsList?[indexPath.row] as? [String] {
+        presentSizeInformation(index: indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        presentSizeInformation(index: indexPath.row)
+    }
+    
+    func presentSizeInformation(index: Int) {
+        if index == 4 {
+            if let sizeInformation = self.productAsList?[index] as? [String] {
                 let alertController = prepareAlertController(sizeInfo: sizeInformation)
                 present(alertController, animated: true, completion: nil)
             }
         }
     }
-    
     func prepareAlertController(sizeInfo: [String]) -> UIAlertController {
         let alertController = UIAlertController(title: "Size Information", message: "Available Sizes:", preferredStyle: .alert)
         

@@ -83,10 +83,10 @@ class MasterTableViewController: UITableViewController {
             cell.titleLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         }
         
-        if let price = product.price {
-            cell.priceLabel.text = "$\(price)"
-            cell.priceLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
+        if let finalPrice = product.formattedPrice {
+            cell.priceLabel.text = "$\(finalPrice)"
         }
+        cell.priceLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         
         if let image = product.productImage {
             cell.productImage.image = image

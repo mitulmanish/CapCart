@@ -14,6 +14,7 @@
 		DD2676C91DC21FDF002F520A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2676C71DC21FDF002F520A /* LaunchScreen.storyboard */; };
 		DD9465BB1DC4878C00E78B1D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9465BA1DC4878C00E78B1D /* Product.swift */; };
 		DD9465BD1DC4879900E78B1D /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9465BC1DC4879900E78B1D /* Seller.swift */; };
+		DD9465C01DC4A83700E78B1D /* PriceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9465BF1DC4A83600E78B1D /* PriceFormatter.swift */; };
 		DDCAA0151DC3956D00B40C52 /* DetailDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCAA0141DC3956D00B40C52 /* DetailDescriptionView.xib */; };
 		DDCAA0171DC395FD00B40C52 /* DetailLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCAA0161DC395FD00B40C52 /* DetailLabelView.xib */; };
 		DDCAA01B1DC3989300B40C52 /* DetailLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */; };
@@ -42,6 +43,7 @@
 		DD2676CA1DC21FDF002F520A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD9465BA1DC4878C00E78B1D /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		DD9465BC1DC4879900E78B1D /* Seller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
+		DD9465BF1DC4A83600E78B1D /* PriceFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceFormatter.swift; sourceTree = "<group>"; };
 		DDCAA0141DC3956D00B40C52 /* DetailDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailDescriptionView.xib; sourceTree = "<group>"; };
 		DDCAA0161DC395FD00B40C52 /* DetailLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLabelView.xib; sourceTree = "<group>"; };
 		DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		DD2676BD1DC21FDD002F520A /* CapCart */ = {
 			isa = PBXGroup;
 			children = (
+				DD9465BE1DC4A80200E78B1D /* Utility */,
 				DD2676D01DC22087002F520A /* Model */,
 				DD2676D11DC2208F002F520A /* View */,
 				DD2676D21DC22095002F520A /* Controller */,
@@ -149,15 +152,10 @@
 		DD2676D21DC22095002F520A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DD9465C11DC4A8A300E78B1D /* Custom Cell */,
 				DDFE16FA1DC23F5A0012236E /* MasterTableViewController.swift */,
 				DDD4C9AD1DC37DE9005DEDCF /* DetailTableViewController.swift */,
 				DDEADC031DC247910022273D /* MasterTableViewCell.swift */,
-				DDD4C9AF1DC37ECB005DEDCF /* DetailImageTableViewCell.swift */,
-				DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */,
-				DDCAA01C1DC39C4E00B40C52 /* DetailDescriptionView.swift */,
-				DDCAA01E1DC3A41F00B40C52 /* SizeTableViewCell.swift */,
-				DDCAA0201DC3A43700B40C52 /* SellerTableViewCell.swift */,
-				DDCAA0221DC3AB5600B40C52 /* PriceTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -169,6 +167,27 @@
 				DD2676BE1DC21FDD002F520A /* AppDelegate.swift */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DD9465BE1DC4A80200E78B1D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DD9465BF1DC4A83600E78B1D /* PriceFormatter.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		DD9465C11DC4A8A300E78B1D /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DDD4C9AF1DC37ECB005DEDCF /* DetailImageTableViewCell.swift */,
+				DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */,
+				DDCAA01C1DC39C4E00B40C52 /* DetailDescriptionView.swift */,
+				DDCAA01E1DC3A41F00B40C52 /* SizeTableViewCell.swift */,
+				DDCAA0201DC3A43700B40C52 /* SellerTableViewCell.swift */,
+				DDCAA0221DC3AB5600B40C52 /* PriceTableViewCell.swift */,
+			);
+			name = "Custom Cell";
 			sourceTree = "<group>";
 		};
 		DDD4C9A21DC33EB2005DEDCF /* Data Formater */ = {
@@ -329,6 +348,7 @@
 				DDCAA01B1DC3989300B40C52 /* DetailLabelTableViewCell.swift in Sources */,
 				DDD4C9A41DC33ED3005DEDCF /* DataFormatter.swift in Sources */,
 				DDFE16FB1DC23F5A0012236E /* MasterTableViewController.swift in Sources */,
+				DD9465C01DC4A83700E78B1D /* PriceFormatter.swift in Sources */,
 				DDD4C9A71DC33F68005DEDCF /* HatShopService.swift in Sources */,
 				DDD4C9AE1DC37DE9005DEDCF /* DetailTableViewController.swift in Sources */,
 				DDD4C9AA1DC34133005DEDCF /* Constant.swift in Sources */,

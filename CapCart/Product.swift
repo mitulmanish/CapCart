@@ -83,7 +83,7 @@ class Product {
     }
     
     var productAsList: [AnyObject?] {
-        return [self.productImage, self.title as Optional<AnyObject>, self.price as Optional<AnyObject>, self.description as Optional<AnyObject>, self.sizes as Optional<AnyObject>, self.productSeller]
+        return [self.productImage, self.title as Optional<AnyObject>, self.formattedPrice as Optional<AnyObject>, self.description as Optional<AnyObject>, self.sizes as Optional<AnyObject>, self.productSeller]
     }
     
     var textToShare: String? {
@@ -91,5 +91,13 @@ class Product {
             return nil
         }
         return productTitle + " - " + productDescription
+    }
+    
+    var formattedPrice: String? {
+        if let finalPrice = self.price {
+            let stringPrice = String(finalPrice)
+            return PriceFormatter.convert(price: stringPrice)
+        }
+        return nil
     }
 }

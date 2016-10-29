@@ -10,8 +10,8 @@ import UIKit
 
 class PriceTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var priceLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,5 +22,4 @@ class PriceTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
