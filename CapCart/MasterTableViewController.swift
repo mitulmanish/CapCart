@@ -15,11 +15,26 @@ class MasterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureTableView()
+        configureProgressIndicator()
+        getDataFromService()
+    }
+    
+    func getDataFromService() {
+        HatShopService.sharedInstance.getDataFromService(endPoint: EndPoint.hat) { (data) in
+            self.productList = DataFormatter.getListOfProducts(data: data)
+            self.progressIndiactor?.stopAnimating()
+            self.tableView.reloadData()
+        }
+    }
+    
+    func configureTableView() {
         tableView.register(UINib(nibName: "MasterTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         tableView.estimatedRowHeight = 44.0
         tableView.separatorStyle = .none
-        
+    }
+    
+    func configureProgressIndicator() {
         progressIndiactor = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         progressIndiactor?.color = UIColor.blue
         progressIndiactor?.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
@@ -28,12 +43,6 @@ class MasterTableViewController: UITableViewController {
         view.addSubview(progressIndiactor!)
         progressIndiactor?.bringSubview(toFront: view)
         progressIndiactor?.startAnimating()
-    
-        HatShopService.sharedInstance.getDataFromService(endPoint: EndPoint.hat) { (data) in
-            self.productList = DataFormatter.getListOfProducts(data: data)
-            self.progressIndiactor?.stopAnimating()
-            self.tableView.reloadData()
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,15 +74,18 @@ class MasterTableViewController: UITableViewController {
         cell.masterCellView.clipsToBounds = true
         cell.masterCellView.layer.borderColor =  borderColor
         cell.masterCellView.layer.borderWidth = 4
+        cell.shareButton.setImage(UIImage(named: "Forward-Arrow"), for: .normal)
         cell.shareButton.tag = indexPath.row
-        cell.shareButton.addTarget(self, action: #selector(MasterTableViewController.ratingButtonTapped(_:)), for: .touchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(MasterTableViewController.sharingButtonTapped(_:)), for: .touchUpInside)
         
         if let title = product.title {
             cell.titleLabel.text = title
+            cell.titleLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         }
         
         if let price = product.price {
             cell.priceLabel.text = "$\(price)"
+            cell.priceLabel.font = UIFont(name: "Avenir-Medium", size: 24.0)
         }
         
         if let image = product.productImage {
@@ -84,7 +96,6 @@ class MasterTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
         performSegue(withIdentifier: "detail_segue", sender: nil)
     }
     
@@ -98,12 +109,9 @@ class MasterTableViewController: UITableViewController {
         }
     }
     
-    func ratingButtonTapped(_ button: UIButton) {
-        print(button.tag)
-        print("Button pressed 👍")
-       
+    func sharingButtonTapped(_ button: UIButton) {
         let currentProduct = self.productList[button.tag]
-        guard let imageToShare = currentProduct.productImage, let textToShare = currentProduct.title else {
+        guard let imageToShare = currentProduct.productImage, let textToShare = currentProduct.textToShare else {
             return
         }
         let objectsToShare = [textToShare, imageToShare] as [Any]
@@ -113,66 +121,4 @@ class MasterTableViewController: UITableViewController {
         activityVC.popoverPresentationController?.sourceView = button
         self.present(activityVC, animated: true, completion: nil)
     }
-
-    
-
-    
-    func action(sender: UIButton) {
-        print("Button Clicked")
-        
-    }
-    /*
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
-        return UITableViewAutomaticDimension
-    }
-    */
-  
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

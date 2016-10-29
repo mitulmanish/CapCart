@@ -11,6 +11,7 @@ import UIKit
 class DetailDescriptionView: UITableViewCell {
 
     @IBOutlet weak var descriptionView: UITextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

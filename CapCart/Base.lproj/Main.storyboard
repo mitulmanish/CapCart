@@ -129,6 +129,9 @@
                             <outlet property="delegate" destination="gLG-Qz-7M4" id="gw8-XI-dYl"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="1zA-tP-WVG">
+                        <barButtonItem key="rightBarButtonItem" image="Add Shopping Cart-36-Half" id="8Na-kx-wzz"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eat-sm-v4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,4 +156,7 @@
             <point key="canvasLocation" x="-68" y="58.920539730134934"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Add Shopping Cart-36-Half" width="36" height="36"/>
+    </resources>
 </document>

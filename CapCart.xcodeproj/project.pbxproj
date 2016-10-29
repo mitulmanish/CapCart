@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		73BD5F380BCD52A37B1D33F1 /* Pods_CapCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4AAB7D904656CE6AE1CFDCB /* Pods_CapCart.framework */; };
 		DD2676BF1DC21FDD002F520A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2676BE1DC21FDD002F520A /* AppDelegate.swift */; };
-		DD2676C11DC21FDE002F520A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2676C01DC21FDE002F520A /* ViewController.swift */; };
 		DD2676C41DC21FDE002F520A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2676C21DC21FDE002F520A /* Main.storyboard */; };
 		DD2676C61DC21FDF002F520A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD2676C51DC21FDF002F520A /* Assets.xcassets */; };
 		DD2676C91DC21FDF002F520A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD2676C71DC21FDF002F520A /* LaunchScreen.storyboard */; };
+		DD9465BB1DC4878C00E78B1D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9465BA1DC4878C00E78B1D /* Product.swift */; };
+		DD9465BD1DC4879900E78B1D /* Seller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9465BC1DC4879900E78B1D /* Seller.swift */; };
 		DDCAA0151DC3956D00B40C52 /* DetailDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCAA0141DC3956D00B40C52 /* DetailDescriptionView.xib */; };
 		DDCAA0171DC395FD00B40C52 /* DetailLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCAA0161DC395FD00B40C52 /* DetailLabelView.xib */; };
 		DDCAA01B1DC3989300B40C52 /* DetailLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */; };
@@ -35,11 +36,12 @@
 		24942B318FBDE651481439DB /* Pods-CapCart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapCart.release.xcconfig"; path = "Pods/Target Support Files/Pods-CapCart/Pods-CapCart.release.xcconfig"; sourceTree = "<group>"; };
 		DD2676BB1DC21FDD002F520A /* CapCart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapCart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2676BE1DC21FDD002F520A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DD2676C01DC21FDE002F520A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DD2676C31DC21FDE002F520A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD2676C51DC21FDF002F520A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD2676C81DC21FDF002F520A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD2676CA1DC21FDF002F520A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9465BA1DC4878C00E78B1D /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		DD9465BC1DC4879900E78B1D /* Seller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seller.swift; sourceTree = "<group>"; };
 		DDCAA0141DC3956D00B40C52 /* DetailDescriptionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailDescriptionView.xib; sourceTree = "<group>"; };
 		DDCAA0161DC395FD00B40C52 /* DetailLabelView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLabelView.xib; sourceTree = "<group>"; };
 		DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,17 +112,14 @@
 		DD2676BD1DC21FDD002F520A /* CapCart */ = {
 			isa = PBXGroup;
 			children = (
-				DDD4C9A81DC34119005DEDCF /* Constants */,
+				DD2676D01DC22087002F520A /* Model */,
+				DD2676D11DC2208F002F520A /* View */,
+				DD2676D21DC22095002F520A /* Controller */,
 				DDD4C9A51DC33F44005DEDCF /* Service */,
 				DDD4C9A21DC33EB2005DEDCF /* Data Formater */,
+				DDD4C9A81DC34119005DEDCF /* Constants */,
 				DD2676D31DC2209D002F520A /* Supporting Files */,
-				DD2676D21DC22095002F520A /* Controller */,
-				DD2676D11DC2208F002F520A /* View */,
-				DD2676D01DC22087002F520A /* Model */,
-				DD2676C21DC21FDE002F520A /* Main.storyboard */,
 				DD2676C51DC21FDF002F520A /* Assets.xcassets */,
-				DD2676C71DC21FDF002F520A /* LaunchScreen.storyboard */,
-				DD2676CA1DC21FDF002F520A /* Info.plist */,
 			);
 			path = CapCart;
 			sourceTree = "<group>";
@@ -128,6 +127,8 @@
 		DD2676D01DC22087002F520A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD9465BA1DC4878C00E78B1D /* Product.swift */,
+				DD9465BC1DC4879900E78B1D /* Seller.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -135,6 +136,8 @@
 		DD2676D11DC2208F002F520A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DD2676C71DC21FDF002F520A /* LaunchScreen.storyboard */,
+				DD2676C21DC21FDE002F520A /* Main.storyboard */,
 				DDD4C9A01DC32B74005DEDCF /* MasterTableViewCell.xib */,
 				DDD4C9AB1DC37A5A005DEDCF /* DetailProductImageViewCell.xib */,
 				DDCAA0141DC3956D00B40C52 /* DetailDescriptionView.xib */,
@@ -146,10 +149,9 @@
 		DD2676D21DC22095002F520A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DD2676C01DC21FDE002F520A /* ViewController.swift */,
 				DDFE16FA1DC23F5A0012236E /* MasterTableViewController.swift */,
-				DDEADC031DC247910022273D /* MasterTableViewCell.swift */,
 				DDD4C9AD1DC37DE9005DEDCF /* DetailTableViewController.swift */,
+				DDEADC031DC247910022273D /* MasterTableViewCell.swift */,
 				DDD4C9AF1DC37ECB005DEDCF /* DetailImageTableViewCell.swift */,
 				DDCAA01A1DC3989300B40C52 /* DetailLabelTableViewCell.swift */,
 				DDCAA01C1DC39C4E00B40C52 /* DetailDescriptionView.swift */,
@@ -163,6 +165,7 @@
 		DD2676D31DC2209D002F520A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD2676CA1DC21FDF002F520A /* Info.plist */,
 				DD2676BE1DC21FDD002F520A /* AppDelegate.swift */,
 			);
 			name = "Supporting Files";
@@ -322,7 +325,7 @@
 			files = (
 				DDCAA0211DC3A43700B40C52 /* SellerTableViewCell.swift in Sources */,
 				DDCAA01D1DC39C4E00B40C52 /* DetailDescriptionView.swift in Sources */,
-				DD2676C11DC21FDE002F520A /* ViewController.swift in Sources */,
+				DD9465BB1DC4878C00E78B1D /* Product.swift in Sources */,
 				DDCAA01B1DC3989300B40C52 /* DetailLabelTableViewCell.swift in Sources */,
 				DDD4C9A41DC33ED3005DEDCF /* DataFormatter.swift in Sources */,
 				DDFE16FB1DC23F5A0012236E /* MasterTableViewController.swift in Sources */,
@@ -333,6 +336,7 @@
 				DDEADC041DC247910022273D /* MasterTableViewCell.swift in Sources */,
 				DDCAA0231DC3AB5600B40C52 /* PriceTableViewCell.swift in Sources */,
 				DD2676BF1DC21FDD002F520A /* AppDelegate.swift in Sources */,
+				DD9465BD1DC4879900E78B1D /* Seller.swift in Sources */,
 				DDD4C9B01DC37ECB005DEDCF /* DetailImageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
